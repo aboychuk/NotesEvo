@@ -54,14 +54,62 @@
 		6F471296228EB6280097E883 /* NotesEvo */ = {
 			isa = PBXGroup;
 			children = (
-				6F471297228EB6280097E883 /* AppDelegate.swift */,
-				6F471299228EB6280097E883 /* ViewController.swift */,
-				6F47129B228EB6280097E883 /* Main.storyboard */,
-				6F47129E228EB6290097E883 /* Assets.xcassets */,
-				6F4712A0228EB6290097E883 /* LaunchScreen.storyboard */,
-				6F4712A3228EB6290097E883 /* Info.plist */,
+				6F486AB722929DE6000A0171 /* Supporting Files */,
+				6F486AB622929DD6000A0171 /* Resource */,
+				6F486AB522929DA5000A0171 /* Source */,
 			);
 			path = NotesEvo;
+			sourceTree = "<group>";
+		};
+		6F486AB522929DA5000A0171 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6F486AB922929E0C000A0171 /* Models */,
+				6F486AB822929E05000A0171 /* UI */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		6F486AB622929DD6000A0171 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6F47129E228EB6290097E883 /* Assets.xcassets */,
+				6F4712A0228EB6290097E883 /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6F486AB722929DE6000A0171 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F4712A3228EB6290097E883 /* Info.plist */,
+				6F471297228EB6280097E883 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6F486AB822929E05000A0171 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6F47129B228EB6280097E883 /* Main.storyboard */,
+				6F486ABA22929E2A000A0171 /* ViewControllers */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		6F486AB922929E0C000A0171 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6F486ABA22929E2A000A0171 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6F471299228EB6280097E883 /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,7 +332,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52PA7U84PR;
-				INFOPLIST_FILE = NotesEvo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NotesEvo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -292,7 +341,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewboychuk.NotesEvo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,7 +351,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 52PA7U84PR;
-				INFOPLIST_FILE = NotesEvo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NotesEvo/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewboychuk.NotesEvo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
