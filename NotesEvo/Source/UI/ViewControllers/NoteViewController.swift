@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NoteViewController.swift
 //  NotesEvo
 //
 //  Created by Andrew Boychuk on 5/17/19.
@@ -8,8 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NoteViewController: UIViewController {
+    
+    // MARK: - Properties
 
+    @IBOutlet weak var SaveButton: UIBarButtonItem?
+    
+    
+    // MARK: - Override
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
