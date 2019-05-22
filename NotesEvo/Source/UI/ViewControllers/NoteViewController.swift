@@ -14,7 +14,6 @@ class NoteViewController: UIViewController {
 
     @IBOutlet weak var SaveButton: UIBarButtonItem?
     
-    
     // MARK: - Override
     
     override func viewDidLoad() {

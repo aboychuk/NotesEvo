@@ -12,9 +12,9 @@ class NoteTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
-    @IBOutlet weak var TextLabel: UILabel?
-    @IBOutlet weak var DateLabel: UILabel?
-    @IBOutlet weak var TimeLabel: UILabel?
+    @IBOutlet weak var contentLabel: UILabel?
+    @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var timeLabel: UILabel?
     
     
     // MARK: - Override
@@ -28,6 +28,31 @@ class NoteTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func fillWith(model: Note) {
+        self.contentLabel?.text = model.content
+        self.dateLabel?.text = self.date(from: model.createDate)
+        self.timeLabel?.text = self.time(from: model.createDate)
+    }
+    
+    // TODO: Add formatter class
+    
+    // MARK: - Private
+    
+    private func time(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        return formatter.string(from: date)
+    }
+    
+    private func date(from date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yy"
+        
+        return formatter.string(from: date)
+
     }
 
 }

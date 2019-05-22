@@ -14,13 +14,13 @@ class Note {
     
     let createDate: Date
     var modifyDate: Date
-    var text: String
+    var content: String
     
     // MARK: - Init
     
-    init(createDate: Date, text: String) {
+    init(createDate: Date, content: String) {
         self.createDate = createDate
         self.modifyDate = createDate
-        self.text = text
+        self.content = content
     }
 }
