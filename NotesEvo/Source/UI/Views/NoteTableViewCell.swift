@@ -31,28 +31,14 @@ class NoteTableViewCell: UITableViewCell {
     }
     
     func fillWith(model: Note) {
-        self.contentLabel?.text = model.content
-        self.dateLabel?.text = self.date(from: model.createDate)
-        self.timeLabel?.text = self.time(from: model.createDate)
-    }
-    
-    // TODO: Add formatter class
-    
-    // MARK: - Private
-    
-    private func time(from date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
         
-        return formatter.string(from: date)
+        self.contentLabel?.text = model.content.truncate(length: self.stringLength)
+        self.dateLabel?.text = formatter.dateString(model.createDate)
+        self.timeLabel?.text = formatter.timeString(model.createDate)
     }
     
-    private func date(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yy"
-        
-        return formatter.string(from: date)
-
-    }
-
+    // MARK: - Constants
+    
+    private let stringLength = 100
 }

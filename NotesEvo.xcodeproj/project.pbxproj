@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0E073A22953C3A0024C9FC /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */; };
+		6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E073B229547530024C9FC /* String+Extensions.swift */; };
 		6F1098222293EC2D008F083F /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1098212293EC2D008F083F /* NotesTableViewController.swift */; };
 		6F471298228EB6280097E883 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F471297228EB6280097E883 /* AppDelegate.swift */; };
 		6F47129A228EB6280097E883 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F471299228EB6280097E883 /* NoteViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		6F0E073B229547530024C9FC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6F1098212293EC2D008F083F /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
 		6F471294228EB6280097E883 /* NotesEvo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesEvo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F471297228EB6280097E883 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F0E073722953C020024C9FC /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				6F0E073822953C100024C9FC /* Extensions */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		6F0E073822953C100024C9FC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */,
+				6F0E073B229547530024C9FC /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6F1098202293EBF4008F083F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +117,7 @@
 		6F486AB722929DE6000A0171 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6F0E073722953C020024C9FC /* Library */,
 				6F4712A3228EB6290097E883 /* Info.plist */,
 				6F471297228EB6280097E883 /* AppDelegate.swift */,
 			);
@@ -201,7 +223,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F47129A228EB6280097E883 /* NoteViewController.swift in Sources */,
+				6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */,
 				6F471298228EB6280097E883 /* AppDelegate.swift in Sources */,
+				6F0E073A22953C3A0024C9FC /* DateFormatter+Extensions.swift in Sources */,
 				6F486ABE2292C455000A0171 /* Note.swift in Sources */,
 				6F486AC02292D22C000A0171 /* NoteTableViewCell.swift in Sources */,
 				6F1098222293EC2D008F083F /* NotesTableViewController.swift in Sources */,
