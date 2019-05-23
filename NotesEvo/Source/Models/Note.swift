@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Note {
+struct Note {
     
     // MARK: - Properties
     

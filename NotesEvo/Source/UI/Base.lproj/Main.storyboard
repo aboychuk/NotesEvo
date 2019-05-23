@@ -26,12 +26,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dr-ua-icg">
-                                            <rect key="frame" x="16" y="11" width="60" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dr-ua-icg">
+                                            <rect key="frame" x="16" y="11" width="90" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="18" id="Iaw-aC-H53"/>
-                                                <constraint firstAttribute="width" constant="60" id="P40-Hr-B75"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="RE0-lC-ueT"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="RE0-lC-ueT"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
@@ -39,15 +38,14 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAY-ej-BuJ">
                                             <rect key="frame" x="16" y="37" width="317" height="22"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiJ-o9-nmm">
-                                            <rect key="frame" x="273" y="11" width="60" height="18"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiJ-o9-nmm">
+                                            <rect key="frame" x="299" y="11" width="34" height="18"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="ZEj-ZE-jq5"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="fGC-M6-hPb"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="fGC-M6-hPb"/>
                                                 <constraint firstAttribute="height" constant="18" id="qpJ-CW-2B9"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -59,6 +57,7 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="GAY-ej-BuJ" secondAttribute="bottom" id="7Cz-za-Cpl"/>
                                         <constraint firstItem="GAY-ej-BuJ" firstAttribute="top" secondItem="6dr-ua-icg" secondAttribute="bottom" constant="8" symbolic="YES" id="CuQ-Ea-jF9"/>
                                         <constraint firstItem="hiJ-o9-nmm" firstAttribute="trailing" secondItem="r98-mh-xDL" secondAttribute="trailingMargin" id="E7d-3h-Dw1"/>
+                                        <constraint firstItem="hiJ-o9-nmm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6dr-ua-icg" secondAttribute="trailing" constant="8" symbolic="YES" id="N8O-Tn-rAL"/>
                                         <constraint firstItem="6dr-ua-icg" firstAttribute="top" secondItem="r98-mh-xDL" secondAttribute="topMargin" id="Z1A-E9-dLL"/>
                                         <constraint firstItem="GAY-ej-BuJ" firstAttribute="leading" secondItem="r98-mh-xDL" secondAttribute="leadingMargin" id="ZbQ-hP-ww8"/>
                                         <constraint firstItem="GAY-ej-BuJ" firstAttribute="trailing" secondItem="r98-mh-xDL" secondAttribute="trailingMargin" id="cmS-n7-khI"/>
@@ -117,17 +116,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" usesAttributedText="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bgf-SP-saW">
-                                <rect key="frame" x="8" y="72" width="359" height="587"/>
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" text="NoData" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bgf-SP-saW">
+                                <rect key="frame" x="8" y="72" width="359" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                        <attributes>
-                                            <font key="NSFont" size="17" name=".SFNSText"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                         </subviews>
@@ -140,6 +132,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="g3d-nT-C3C"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="NoteTextView" destination="Bgf-SP-saW" id="nEl-j2-mMY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0C012522968ACD00F7D052 /* ViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C012422968ACD00F7D052 /* ViewControllerDelegate.swift */; };
+		6F0C0127229697A700F7D052 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C0126229697A700F7D052 /* Functions.swift */; };
+		6F0C012E22969A5800F7D052 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C012C22969A5800F7D052 /* UITableView+Extensions.swift */; };
+		6F0C013122969D9400F7D052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C013022969D9400F7D052 /* Constants.swift */; };
 		6F0E073A22953C3A0024C9FC /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */; };
 		6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E073B229547530024C9FC /* String+Extensions.swift */; };
 		6F1098222293EC2D008F083F /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1098212293EC2D008F083F /* NotesTableViewController.swift */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F0C012422968ACD00F7D052 /* ViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerDelegate.swift; sourceTree = "<group>"; };
+		6F0C0126229697A700F7D052 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		6F0C012C22969A5800F7D052 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		6F0C013022969D9400F7D052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		6F0E073B229547530024C9FC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6F1098212293EC2D008F083F /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
@@ -45,9 +53,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F0C012322968AA300F7D052 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6F0C012422968ACD00F7D052 /* ViewControllerDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		6F0E073722953C020024C9FC /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6F0C0126229697A700F7D052 /* Functions.swift */,
+				6F0C012322968AA300F7D052 /* Protocols */,
 				6F0E073822953C100024C9FC /* Extensions */,
 			);
 			path = Library;
@@ -56,6 +74,7 @@
 		6F0E073822953C100024C9FC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6F0C012C22969A5800F7D052 /* UITableView+Extensions.swift */,
 				6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */,
 				6F0E073B229547530024C9FC /* String+Extensions.swift */,
 			);
@@ -110,6 +129,7 @@
 			children = (
 				6F47129E228EB6290097E883 /* Assets.xcassets */,
 				6F4712A0228EB6290097E883 /* LaunchScreen.storyboard */,
+				6F0C013022969D9400F7D052 /* Constants.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -223,9 +243,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F47129A228EB6280097E883 /* NoteViewController.swift in Sources */,
+				6F0C013122969D9400F7D052 /* Constants.swift in Sources */,
 				6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */,
+				6F0C0127229697A700F7D052 /* Functions.swift in Sources */,
 				6F471298228EB6280097E883 /* AppDelegate.swift in Sources */,
 				6F0E073A22953C3A0024C9FC /* DateFormatter+Extensions.swift in Sources */,
+				6F0C012E22969A5800F7D052 /* UITableView+Extensions.swift in Sources */,
+				6F0C012522968ACD00F7D052 /* ViewControllerDelegate.swift in Sources */,
 				6F486ABE2292C455000A0171 /* Note.swift in Sources */,
 				6F486AC02292D22C000A0171 /* NoteTableViewCell.swift in Sources */,
 				6F1098222293EC2D008F083F /* NotesTableViewController.swift in Sources */,

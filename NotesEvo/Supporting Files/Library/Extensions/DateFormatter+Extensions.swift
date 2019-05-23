@@ -26,6 +26,6 @@ extension DateFormatter {
     
     public enum DateFormatType: String {
         case ddMMyy = "dd.MM.yy"
-        case hhmm = "HH.mm"
+        case hhmm = "HH:mm"
     }
 }
