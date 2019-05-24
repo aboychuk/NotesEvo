@@ -51,11 +51,7 @@ class NoteListViewController: UIViewController {
         vc.searchBar.backgroundColor = UIColor.gray
         vc.searchBar.barTintColor = UIColor.white
         if let textfield = vc.searchBar.value(forKey: "searchField") as? UITextField {
-            if let backgroundview = textfield.subviews.first {
-                backgroundview.backgroundColor = UIColor.gray
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-            }
+            textfield.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.1)
         }
         self.notesTableView?.tableHeaderView = vc.searchBar
     }
