@@ -8,13 +8,15 @@
 
 import UIKit
 
-class NoteListViewController: UIViewController, RootView {
-    typealias ViewType = NoteListView
+class NoteListViewController: UIViewController {
     
     // MARK: - Properties
     
     var noteList = [Note]()
-    
+    var filteredTableData = [Note]()
+    let searchController = UISearchController(searchResultsController: nil)
+    @IBOutlet weak var notesTableView: UITableView?
+
     // MARK: - View lyfecycle
 
     override func viewDidLoad() {
@@ -26,24 +28,42 @@ class NoteListViewController: UIViewController, RootView {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let index = self.rootView?.notesTableView?.indexPathForSelectedRow {
-            self.rootView?.notesTableView?.deselectRow(at: index, animated: true)
+        if let index = self.notesTableView?.indexPathForSelectedRow {
+            self.notesTableView?.deselectRow(at: index, animated: true)
         }
     }
     
     // MARK: - Private
     
     private func setupView() {
+        self.setupSearchController()
         self.navigationItem.title = Constants.notes.value
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add,
                                                                       target: self,
                                                                       action: #selector(onAddButton))
     }
     
+    private func setupSearchController() {
+        let vc = self.searchController
+        vc.searchResultsUpdater = self
+        vc.hidesNavigationBarDuringPresentation = false
+        vc.dimsBackgroundDuringPresentation = false
+        vc.searchBar.backgroundColor = UIColor.gray
+        vc.searchBar.barTintColor = UIColor.white
+        if let textfield = vc.searchBar.value(forKey: "searchField") as? UITextField {
+            if let backgroundview = textfield.subviews.first {
+                backgroundview.backgroundColor = UIColor.gray
+                backgroundview.layer.cornerRadius = 10;
+                backgroundview.clipsToBounds = true;
+            }
+        }
+        self.notesTableView?.tableHeaderView = vc.searchBar
+    }
+    
     private func registerCell() {
         let cellName = typeString(NoteTableViewCell.self)
         let nib = UINib(nibName: cellName, bundle: .main)
-        self.rootView?.notesTableView?.register(nib, forCellReuseIdentifier: cellName)
+        self.notesTableView?.register(nib, forCellReuseIdentifier: cellName)
     }
     
     private func prepareTest() {
@@ -67,11 +87,14 @@ class NoteListViewController: UIViewController, RootView {
 extension NoteListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.noteList.count
+        let count = self.searchController.isActive ? self.filteredTableData.count : self.noteList.count
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let note = self.noteList[indexPath.row]
+        let note = self.searchController.isActive
+            ? self.filteredTableData[indexPath.row]
+            : self.noteList[indexPath.row]
         let cell = tableView.reusableCellWith(type: NoteTableViewCell.self, index: indexPath)
         cell.fillWith(model: note)
         
@@ -110,23 +133,37 @@ extension NoteListViewController: UITableViewDelegate {
     }
 }
 
+extension NoteListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            self.filteredTableData = self.noteList.filter { note in
+                return note.content.lowercased().contains(searchText.lowercased())
+            }
+        } else {
+            self.filteredTableData = self.noteList
+        }
+        self.notesTableView?.reloadData()
+    }
+}
+
 extension NoteListViewController: ViewControllerDelegate {
     typealias Model = Note
     
     func didAdd(model: Note) {
-        self.rootView?.notesTableView?.updateTableWith { [weak self] in
+        self.notesTableView?.updateTableWith { [weak self] in
             let index = 0
             self?.noteList.insert(model, at: index)
             let indexPath = IndexPath(row: index, section: index)
-            self?.rootView?.notesTableView?.insertRows(at: [indexPath], with: .left)
+            self?.notesTableView?.insertRows(at: [indexPath], with: .left)
         }
     }
     
     func didEdit(model: Note, index: Int) {
-        self.rootView?.notesTableView?.updateTableWith { [weak self] in
+        self.notesTableView?.updateTableWith { [weak self] in
             self?.noteList[index] = model
             let indexPath = IndexPath(row: index, section: 0)
-            self?.rootView?.notesTableView?.reloadRows(at: [indexPath], with: .right)
+            self?.notesTableView?.reloadRows(at: [indexPath], with: .right)
         }
     }
 }

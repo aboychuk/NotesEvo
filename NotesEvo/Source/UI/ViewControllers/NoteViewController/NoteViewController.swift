@@ -14,15 +14,15 @@ enum NoteViewControllerState {
     case edit(model: Note, index: Int)
 }
 
-class NoteViewController: UIViewController, RootView {
-    typealias ViewType = NoteView
+class NoteViewController: UIViewController {
     
     // MARK: - Properties
     
     var state = NoteViewControllerState.add
     weak var delegate: NoteListViewController?
     private var note: Note?
-    
+    @IBOutlet weak var noteTextView: UITextView?
+
     // MARK: - Override
     
     override func viewDidLoad() {
@@ -45,14 +45,13 @@ class NoteViewController: UIViewController, RootView {
     }
     
     private func prepareAddView() {
-        
         self.prepareNavigationItem()
     }
     
     private func prepareDetailView(model: Note) {
         self.note = model
         self.fillView(model: model)
-        self.rootView?.noteTextView?.isEditable = false
+        self.noteTextView?.isEditable = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
                                                                  target: self,
                                                                  action: #selector(onShareButton))
@@ -66,17 +65,17 @@ class NoteViewController: UIViewController, RootView {
     
     private func prepareNavigationItem() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                                                 target: NoteViewController.self,
+                                                                 target: self,
                                                                  action: #selector(onSaveButton))
         
     }
     
     private func fillView(model: Note) {
-        self.rootView?.noteTextView?.text = model.content
+        self.noteTextView?.text = model.content
     }
     
     private func fillModel() {
-        let content = self.rootView?.noteTextView?.text
+        let content = self.noteTextView?.text
         content.map { let note = Note(modifyDate: Date(), content: $0)
             self.note = note
         }
@@ -101,4 +100,3 @@ class NoteViewController: UIViewController, RootView {
         self.navigationController?.popToRootViewController(animated: true)
     }
 }
-

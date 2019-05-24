@@ -13,10 +13,8 @@
 		6F0C013122969D9400F7D052 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0C013022969D9400F7D052 /* Constants.swift */; };
 		6F0E073A22953C3A0024C9FC /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */; };
 		6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E073B229547530024C9FC /* String+Extensions.swift */; };
-		6F12D9BD2297201D00F2401D /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12D9BC2297201D00F2401D /* NoteView.swift */; };
 		6F12D9BF2297209800F2401D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12D9BE2297209800F2401D /* RootView.swift */; };
 		6F12D9C12297215800F2401D /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F12D9C02297215800F2401D /* NoteTableViewCell.xib */; };
-		6F12D9C52297263300F2401D /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12D9C42297263300F2401D /* NoteListView.swift */; };
 		6F12D9C822972D2A00F2401D /* UINib+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12D9C622972D2A00F2401D /* UINib+Extensions.swift */; };
 		6F12D9C922972D2A00F2401D /* UIWindow+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12D9C722972D2A00F2401D /* UIWindow+Extensions.swift */; };
 		6F12D9CC229736E400F2401D /* NoteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F12D9CA229736E400F2401D /* NoteListViewController.swift */; };
@@ -37,10 +35,8 @@
 		6F0C013022969D9400F7D052 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		6F0E073B229547530024C9FC /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		6F12D9BC2297201D00F2401D /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		6F12D9BE2297209800F2401D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		6F12D9C02297215800F2401D /* NoteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTableViewCell.xib; sourceTree = "<group>"; };
-		6F12D9C42297263300F2401D /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
 		6F12D9C622972D2A00F2401D /* UINib+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINib+Extensions.swift"; sourceTree = "<group>"; };
 		6F12D9C722972D2A00F2401D /* UIWindow+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extensions.swift"; sourceTree = "<group>"; };
 		6F12D9CA229736E400F2401D /* NoteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewController.swift; sourceTree = "<group>"; };
@@ -102,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				6F12D9CE22973A0100F2401D /* NoteTableViewCell */,
-				6F12D9BC2297201D00F2401D /* NoteView.swift */,
-				6F12D9C42297263300F2401D /* NoteListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -289,9 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F12D9C52297263300F2401D /* NoteListView.swift in Sources */,
 				6F0C013122969D9400F7D052 /* Constants.swift in Sources */,
-				6F12D9BD2297201D00F2401D /* NoteView.swift in Sources */,
 				6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */,
 				6F12D9C922972D2A00F2401D /* UIWindow+Extensions.swift in Sources */,
 				6F0C0127229697A700F7D052 /* Functions.swift in Sources */,
