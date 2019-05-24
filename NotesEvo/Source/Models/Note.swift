@@ -12,15 +12,13 @@ struct Note {
     
     // MARK: - Properties
     
-    let createDate: Date
     var modifyDate: Date
     var content: String
     
     // MARK: - Init
     
-    init(createDate: Date, content: String) {
-        self.createDate = createDate
-        self.modifyDate = createDate
+    init(modifyDate: Date, content: String) {
+        self.modifyDate = modifyDate
         self.content = content
     }
 }

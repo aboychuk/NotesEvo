@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController.swift"
-            timestampString = "580306333.987998"
+            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController/NoteViewController.swift"
+            timestampString = "580360095.0972559"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "prepareAddView()"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "setupView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController.swift"
-            timestampString = "580306333.988083"
+            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController/NoteViewController.swift"
+            timestampString = "580360095.101032"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "onAddButton()"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "onSaveButton()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,29 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController.swift"
-            timestampString = "580306333.9881541"
+            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController/NoteViewController.swift"
+            timestampString = "580360095.101684"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "fillModel()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NotesEvo/Source/UI/ViewControllers/NoteViewController.swift"
-            timestampString = "580306333.988222"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "onAddButton()"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "onSaveButton()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

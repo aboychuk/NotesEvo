@@ -12,4 +12,5 @@ protocol ViewControllerDelegate where Self: UIViewController {
     associatedtype Model
     
     func didAdd(model: Model)
+    func didEdit(model: Model, index: Int)
 }
