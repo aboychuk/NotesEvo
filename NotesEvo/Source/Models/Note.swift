@@ -14,11 +14,8 @@ struct Note {
     
     var modifyDate: Date
     var content: String
+}
+
+extension Note: Equatable {
     
-    // MARK: - Init
-    
-    init(modifyDate: Date, content: String) {
-        self.modifyDate = modifyDate
-        self.content = content
-    }
 }
