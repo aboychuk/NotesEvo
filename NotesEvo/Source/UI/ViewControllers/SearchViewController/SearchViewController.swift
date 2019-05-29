@@ -9,12 +9,13 @@
 import UIKit
 
 class SearchViewController: UISearchController {
+    typealias Model = [Note]
     
     // MARK: - Properties
     
-    private var model = [Note]()
-    private(set) var filteredModel = [Note]()
-    
+    private var model = Model()
+    private(set) var filteredModel = Model()
+    private var noteSearchBar = NoteSearchBar()
     
     // MARK: - Init
     
@@ -34,11 +35,11 @@ class SearchViewController: UISearchController {
     // MARK: - View lifecycle
     
     override func viewDidLoad() {
-        self.searchBar
+
     }
     
-    private func setupSearchBar() -> UISearchBar {
-        let searchView = UISearchBar()
+    private func setupSearchBar() {
+        let searchView = self.noteSearchBar
         searchView.backgroundColor = UIColor.gray
         searchView.barTintColor = UIColor.white
         if let textfield = self.searchBar.value(forKey: "searchField") as? UITextField {

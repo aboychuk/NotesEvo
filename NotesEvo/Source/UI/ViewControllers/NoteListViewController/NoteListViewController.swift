@@ -50,7 +50,8 @@ class NoteListViewController: UIViewController {
         super.viewDidLoad()
         self.setupView()
         self.registerCell()
-        self.notesTableView?.tableHeaderView = self.searchController.searchBar
+        self.navigationItem.searchController = self.searchController
+//        self.notesTableView?.tableHeaderView = self.searchController.searchBar
     }
     
     override func viewWillAppear(_ animated: Bool) {
