@@ -16,17 +16,19 @@ class NoteTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel?
     @IBOutlet weak var timeLabel: UILabel?
     
-    // MARK: - Override
+    // MARK: - Constants
     
-    func fillWith(model: Note) {
+    private let stringLength = 100
+}
+
+extension NoteTableViewCell: ViewFillable {
+    typealias Model = Note
+
+    func fillView(with model: Note) {
         let formatter = DateFormatter()
         
         self.contentLabel?.text = model.content.truncate(length: self.stringLength)
         self.dateLabel?.text = formatter.dateString(model.modifyDate)
         self.timeLabel?.text = formatter.timeString(model.modifyDate)
     }
-    
-    // MARK: - Constants
-    
-    private let stringLength = 100
 }

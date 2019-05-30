@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.window {
-            let note = Note(modifyDate: Date(), content: Constants.defaultContent.value)
-            let model = [Note](repeating: note, count: 10)
-            let viewController = UINavigationController(rootViewController: NoteListViewController(model: model))
+            let viewController = UINavigationController(rootViewController: NoteListViewController())
             $0.rootViewController = viewController
             $0.makeKeyAndVisible()
         }

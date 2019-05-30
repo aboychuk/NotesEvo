@@ -25,4 +25,10 @@ extension UITableView {
         block()
         self.endUpdates()
     }
+    
+    func registerCell<T>(type: T.Type) {
+        let cellName = typeString(type)
+        let nib = UINib(nibName: cellName, bundle: .main)
+        self.register(nib, forCellReuseIdentifier: cellName)
+    }
 }

@@ -12,79 +12,60 @@ class NoteListViewController: UIViewController {
     
     // MARK: - Properties
     
-    var noteList: [Note]
-    var searchController: SearchViewController
-    var filteredTableData: [Note] {
-        didSet {
-            if self.filteredTableData != oldValue {
-                self.notesTableView?.reloadData()
-            }
-        }
-    }
+    var noteList = [Note]()
+    private var filteredTableData = [Note]()
+    private var searchController = UISearchController(searchResultsController: nil)
+    private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                       target: self,
+                                       action: #selector(onAddButton))
     @IBOutlet weak var notesTableView: UITableView?
-    
-    // MARK: - Init
-    
-    init(model: [Note]) {
-        self.noteList = model
-        let searchVC = SearchViewController(model: model)
-        self.searchController = searchVC
-        self.filteredTableData = searchVC.filteredModel
-        
-        super.init(nibName: typeString(NoteListViewController.self), bundle: .main)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        let model = [Note]()
-        self.noteList = model
-        let searchVC = SearchViewController(model: model)
-        self.searchController = searchVC
-        self.filteredTableData = searchVC.filteredModel
-        
-        super.init(coder: aDecoder)
-    }
     
     // MARK: - View lyfecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.registerCell()
-        self.navigationItem.searchController = self.searchController
-//        self.notesTableView?.tableHeaderView = self.searchController.searchBar
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let index = self.notesTableView?.indexPathForSelectedRow {
-            self.notesTableView?.deselectRow(at: index, animated: true)
-        }
     }
     
     // MARK: - Private
     
     private func setupView() {
+        self.notesTableView?.registerCell(type: NoteTableViewCell.self)
         self.navigationItem.title = Constants.notes.value
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add,
-                                                                      target: self,
-                                                                      action: #selector(onAddButton))
+        self.navigationItem.rightBarButtonItem = self.addBarButton
+        self.setupSearchController()
+        self.prepareTest()
     }
     
-    private func registerCell() {
-        let cellName = typeString(NoteTableViewCell.self)
-        let nib = UINib(nibName: cellName, bundle: .main)
-        self.notesTableView?.register(nib, forCellReuseIdentifier: cellName)
+    private func setupSearchController() {
+        let vc = self.searchController
+        vc.searchResultsUpdater = self
+        vc.hidesNavigationBarDuringPresentation = false
+        vc.dimsBackgroundDuringPresentation = false
+        self.navigationItem.searchController = vc
+        self.navigationItem.hidesSearchBarWhenScrolling = true
     }
     
-    @objc private func onAddButton() {
-        self.showNextVC(state: .add)
-    }
+    // MARK: - Navigation
     
     private func showNextVC(state: NoteViewControllerState) {
         let viewController = NoteViewController()
         viewController.state = state
         viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func prepareTest() {
+        let note = Note(date: Date(), content: Constants.defaultContent.value)
+        let arrayModel = [Note](repeating: note, count: 10)
+        self.noteList = arrayModel
+    }
+
+    
+    // MARK: - Objc
+    
+    @objc private func onAddButton() {
+        self.showNextVC(state: .add)
     }
 }
 
@@ -100,7 +81,7 @@ extension NoteListViewController: UITableViewDataSource {
             ? self.filteredTableData[indexPath.row]
             : self.noteList[indexPath.row]
         let cell = tableView.reusableCellWith(type: NoteTableViewCell.self, index: indexPath)
-        cell.fillWith(model: note)
+        cell.fillView(with: note)
         
         return cell
     }
@@ -111,6 +92,7 @@ extension NoteListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
         let model = self.noteList[index]
+        tableView.deselectRow(at: indexPath, animated: false)
         self.showNextVC(state: .detail(model: model))
     }
     
@@ -134,6 +116,20 @@ extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+}
+
+extension NoteListViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            self.filteredTableData = self.noteList.filter { note in
+                return note.content.lowercased().contains(searchText.lowercased())
+            }
+        } else {
+            self.filteredTableData = self.noteList
+        }
+        self.notesTableView?.reloadData()
     }
 }
 

@@ -14,15 +14,20 @@ enum NoteViewControllerState {
     case edit(model: Note, index: Int)
 }
 
-class NoteViewController: UIViewController {
+class NoteViewController: UIViewController, RootView {
+    typealias ViewType = NoteView
     
     // MARK: - Properties
     
     var state = NoteViewControllerState.add
     weak var delegate: NoteListViewController?
     private var note: Note?
-    @IBOutlet weak var noteTextView: UITextView?
-
+    private lazy var actionBarButton = UIBarButtonItem(barButtonSystemItem: .action,
+                                                       target: self,
+                                                       action: #selector(onShareButton))
+    private lazy var saveBarButton = UIBarButtonItem(barButtonSystemItem: .save,
+                                                     target: self,
+                                                     action: #selector(onSaveButton))
     // MARK: - Override
     
     override func viewDidLoad() {
@@ -45,41 +50,27 @@ class NoteViewController: UIViewController {
     }
     
     private func prepareAddView() {
-        self.prepareNavigationItem()
+        self.addSaveButton()
     }
     
     private func prepareDetailView(model: Note) {
         self.note = model
-        self.fillView(model: model)
-        self.noteTextView?.isEditable = false
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action,
-                                                                 target: self,
-                                                                 action: #selector(onShareButton))
+        self.rootView?.fillView(with: model)
+        self.rootView?.noteTextView?.isEditable = false
+        self.navigationItem.rightBarButtonItem = self.actionBarButton
     }
     
     private func prepareEditView(model: Note) {
         self.note = model
-        self.fillView(model: model)
-        self.prepareNavigationItem()
+        self.rootView?.fillView(with: model)
+        self.addSaveButton()
     }
     
-    private func prepareNavigationItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
-                                                                 target: self,
-                                                                 action: #selector(onSaveButton))
-        
+    private func addSaveButton() {
+        self.navigationItem.rightBarButtonItem = self.saveBarButton
     }
     
-    private func fillView(model: Note) {
-        self.noteTextView?.text = model.content
-    }
-    
-    private func fillModel() {
-        let content = self.noteTextView?.text
-        content.map { let note = Note(modifyDate: Date(), content: $0)
-            self.note = note
-        }
-    }
+    // MARK: - Objc
     
     @objc private func onShareButton() {
         let shareText = self.note?.content ?? "No Data"
@@ -89,7 +80,7 @@ class NoteViewController: UIViewController {
     }
     
     @objc private func onSaveButton() {
-        self.fillModel()
+        self.note = self.rootView?.fillModel()
         guard let note = self.note else { return }
         switch self.state {
         case .edit(model: _, index: let index):
