@@ -12,16 +12,21 @@ struct Note {
     
     // MARK: - Properties
     
-    var modifyDate: Date
-    var content: String
+    let id: String
+    let modifyDate: Date
+    let content: String
     
     // MARK: - Init
     
     init() {
-        self.init(date: Date(), content: "")
+        let id = UUID().uuidString
+        let date = Date()
+        let content = Constants.empty.value
+        self.init(id: id, date: date, content: content)
     }
     
-    init(date: Date, content: String) {
+    init(id: String, date: Date, content: String) {
+        self.id = id
         self.modifyDate = date
         self.content = content
     }
