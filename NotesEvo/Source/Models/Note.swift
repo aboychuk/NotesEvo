@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct Note {
     
@@ -19,9 +20,13 @@ struct Note {
     // MARK: - Init
     
     init() {
-        let id = UUID().uuidString
         let date = Date()
         let content = Constants.empty.value
+        self.init(date: date, content: content)
+    }
+    
+    init(date: Date, content: String) {
+        let id = UUID().uuidString
         self.init(id: id, date: date, content: content)
     }
     
@@ -33,3 +38,13 @@ struct Note {
 }
 
 extension Note: Equatable { }
+
+extension Note: ManagedObjectConvertible {
+    func toManagedObject(in context: NSManagedObjectContext) -> NoteManagedObject? {
+        let note = NoteManagedObject.getOrCreateSingle(with: self.id, from: context)
+        note.modifyDate = self.modifyDate as NSDate
+        note.content = self.content
+        
+        return note
+    }
+}

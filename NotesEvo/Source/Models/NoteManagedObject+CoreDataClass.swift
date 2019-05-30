@@ -11,6 +11,18 @@ import Foundation
 import CoreData
 
 @objc(NoteManagedObject)
-public class NoteManagedObject: NSManagedObject {
+public class NoteManagedObject: NSManagedObject { }
 
+extension NoteManagedObject: EntityConvertible {
+    typealias Entity = Note
+    
+    func toEntity() -> Note? {
+        guard let id = self.identifier,
+            let date = self.modifyDate as Date?,
+            let content = self.content
+        else { return nil }
+        
+        return Note(id: id, date: date, content: content)
+    }
+    
 }
