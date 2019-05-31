@@ -27,7 +27,7 @@ extension EntityConvertible where Self: NSManagedObject {
                        sortDescriptors: [NSSortDescriptor]?) -> Self?
     {
         return fetch(from: context, with: predicate,
-                     sortDescriptors: sortDescriptors, fetchLimit: 1)?.first
+                     sortDescriptors: sortDescriptors, fetchLimit: 0)?.first
     }
     
     static func single(with id: String, from context: NSManagedObjectContext) -> Self? {

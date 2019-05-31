@@ -40,6 +40,7 @@ struct Note {
 extension Note: Equatable { }
 
 extension Note: ManagedObjectConvertible {
+    
     func toManagedObject(in context: NSManagedObjectContext) -> NoteManagedObject? {
         let note = NoteManagedObject.getOrCreateSingle(with: self.id, from: context)
         note.modifyDate = self.modifyDate as NSDate

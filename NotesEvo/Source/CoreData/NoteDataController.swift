@@ -23,13 +23,17 @@ class NoteDataController {
     
     // MARK: - Public
     
-    func add(note: Note, completion: (Error?) -> ()) {
-        self.manager.upsert(entities: [note]) { (error) in
+    func upsert(note: Note, completion: (Error?) -> ()) {
+        return self.upsert(notes: [note], completion: completion)
+    }
+    
+    func upsert(notes: Model, completion: (Error?) -> ()) {
+        self.manager.upsert(entities: notes) { error in
             error.map { print("\($0)") }
         }
     }
     
-    func fetchNotes(completion: @escaping ([Note]?) -> ()) {
+    func fetchNotes(completion: @escaping (Model?) -> ()) {
         self.manager.get { [weak self] (result: Result<Model, Error>) in
             switch result {
             case .success(let notes):
@@ -42,5 +46,9 @@ class NoteDataController {
         }
     }
     
-    // ADD remove
+    func remove(note: Note, completion: (Error?) -> ()) {
+        self.manager.remove(entity: note, completion: { error in
+            error.map { print("\($0)") }
+        })
+    }
 }

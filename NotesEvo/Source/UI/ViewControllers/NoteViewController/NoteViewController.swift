@@ -50,6 +50,7 @@ class NoteViewController: UIViewController, RootView {
     }
     
     private func prepareAddView() {
+        self.note = Note()
         self.addSaveButton()
     }
     
@@ -80,8 +81,8 @@ class NoteViewController: UIViewController, RootView {
     }
     
     @objc private func onSaveButton() {
-        self.note = self.rootView?.fillModel()
-        guard let note = self.note else { return }
+        let model = self.note
+        guard let note = self.rootView?.fill(model: model ?? Note()) else { return }
         switch self.state {
         case .edit(model: _, index: let index):
             self.delegate?.didEdit(model: note, index: index)

@@ -22,9 +22,9 @@ extension NoteView: ViewFillable, ModelFillable {
         self.noteTextView?.text = model.content
     }
     
-    func fillModel() -> Model {
+    func fill(model: Model) -> Model {
         guard let content = self.noteTextView?.text else { return Note() }
         
-        return Note(date: Date(), content: content)
+        return Note(id: model.id, date: Date(), content: content)
     }
 }

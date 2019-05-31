@@ -30,6 +30,7 @@ class CoreDataManager {
     func get<Entity: ManagedObjectConvertible>(with predicate: NSPredicate? = nil,
                                                sortDescriptors: [NSSortDescriptor]? = nil,
                                                fetchLimit: Int? = nil,
+                                               fetchBatchSize: Int? = nil,
                                                completion: @escaping (Result<[Entity], Error>) -> ())
     {
         self.coreData.performForegroundTask { context in
@@ -37,8 +38,9 @@ class CoreDataManager {
                 let fetchRequest = Entity.ManagedObject.fetchRequest()
                 fetchRequest.predicate = predicate
                 fetchRequest.sortDescriptors = sortDescriptors
-                if let fetchLimit = fetchLimit {
+                if let fetchLimit = fetchLimit, let fetchBatchSize = fetchBatchSize {
                     fetchRequest.fetchLimit = fetchLimit
+                    fetchRequest.fetchBatchSize = fetchBatchSize
                 }
                 let results = try context.fetch(fetchRequest) as? [Entity.ManagedObject]
                 let items: [Entity] = results?.compactMap { $0.toEntity() as? Entity } ?? []
@@ -66,16 +68,20 @@ class CoreDataManager {
         }
     }
     
-//    func remove<Entity: ManagedObjectConvertible>(entity: Entity,
-//                                                  completion: @escaping (Error?) -> ())
-//    {
-//
-//        self.coreData.performBackgroundTask { context in
-//            let object = entity.toManagedObject(in: <#T##NSManagedObjectContext#>)
-//
-//            context.deletedObjects
-//        }
-//    }
+    func remove<Entity: ManagedObjectConvertible>(entity: Entity,
+                                                  completion: @escaping (Error?) -> ())
+    {
+        self.coreData.performBackgroundTask { context in
+            let object = entity.toManagedObject(in: context)
+            object.map { context.delete($0) }
+            do {
+                try context.save()
+                completion(nil)
+            } catch {
+                completion(CoreDataManagerError.canNotSave(error))
+            }
+        }
+    }
 }
 
 

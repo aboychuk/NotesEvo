@@ -8,6 +8,8 @@
 
 import CoreData
 
+
+/// Insatantiates CoreData stack
 final class CoreDataService {
     static let shared = CoreDataService()
     
