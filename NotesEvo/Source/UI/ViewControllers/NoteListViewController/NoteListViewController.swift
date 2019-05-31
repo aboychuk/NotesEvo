@@ -14,6 +14,7 @@ class NoteListViewController: UIViewController {
     
     var noteList = [Note]()
     private var filteredTableData = [Note]()
+    private var coreData = NoteDataController()
     private var searchController = UISearchController(searchResultsController: nil)
     private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add,
                                        target: self,
@@ -56,9 +57,10 @@ class NoteListViewController: UIViewController {
     }
     
     private func prepareTest() {
-        let note = Note(date: Date(), content: Constants.defaultContent.value)
-        let arrayModel = [Note](repeating: note, count: 10)
-        self.noteList = arrayModel
+        self.coreData.fetchNotes { [weak self] noteArray in
+            noteArray.map { self?.noteList = $0 }
+            self?.notesTableView?.reloadData()
+        }
     }
 
     
@@ -97,14 +99,18 @@ extension NoteListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexpath) in
+        let editAction = UITableViewRowAction(style: .default, title: "Edit") { [weak self] (action, indexpath) in
             let index = indexPath.row
-            let model = self.noteList[index]
-            self.showNextVC(state: .edit(model: model, index: index))
+            let model = self?.noteList[index]
+            model.map { self?.showNextVC(state: .edit(model: $0, index: index)) }
+            
         }
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
             let index = indexPath.row
-            self.noteList.remove(at: index)
+            if let model = self?.noteList[index] {
+                self?.coreData.remove(note: model) { error in print(error!)}
+            }
+            self?.noteList.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
@@ -140,6 +146,7 @@ extension NoteListViewController: ViewControllerDelegate {
         self.notesTableView?.updateTableWith { [weak self] in
             let index = 0
             self?.noteList.insert(model, at: index)
+            self?.coreData.upsert(note: model, completion: { error in print(error!)} )
             let indexPath = IndexPath(row: index, section: index)
             self?.notesTableView?.insertRows(at: [indexPath], with: .left)
         }
@@ -148,6 +155,7 @@ extension NoteListViewController: ViewControllerDelegate {
     func didEdit(model: Note, index: Int) {
         self.notesTableView?.updateTableWith { [weak self] in
             self?.noteList[index] = model
+            self?.coreData.upsert(note: model, completion: { error in print(error!)} )
             let indexPath = IndexPath(row: index, section: 0)
             self?.notesTableView?.reloadRows(at: [indexPath], with: .right)
         }

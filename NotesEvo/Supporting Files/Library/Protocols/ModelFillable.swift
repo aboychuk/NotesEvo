@@ -11,5 +11,5 @@ import UIKit
 protocol ModelFillable where Self: UIView {
     associatedtype Model
     
-    func fillModel() -> Model
+    func fill(model: Model) -> Model
 }
