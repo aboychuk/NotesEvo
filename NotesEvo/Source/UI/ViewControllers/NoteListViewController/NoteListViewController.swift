@@ -29,7 +29,6 @@ class NoteListViewController: UIViewController {
     // MARK: - Private
     
     private func setupView() {
-        self.notesTableView?.rowHeight = 96
         self.notesTableView?.registerCell(type: NoteTableViewCell.self)
         self.navigationItem.title = Constants.notes.value
         self.navigationItem.rightBarButtonItem = self.addBarButton
