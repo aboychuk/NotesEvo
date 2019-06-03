@@ -49,13 +49,17 @@ class ArrayModel<Element: Equatable> {
         }
     }
     
-    func elementAt(index: Int) -> Element {
-        return synchronized(self) {
-            if self.count > index {
-                return self.elementAt(index: index)
-            }
-        }
+    func removeAll() {
+        self.elements.removeAll()
     }
+    
+//    func elementAt(index: Int) -> Element {
+//        return synchronized(self) {
+//            if self.count > index {
+//                return self[index]
+//            }
+//        }
+//    }
     
     func moveElement(at sourceIndex: Int, to destenationIndex: Int) {
         synchronized(self) {

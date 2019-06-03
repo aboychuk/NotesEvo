@@ -30,7 +30,7 @@ class CoreDataManager {
     func get<Entity: ManagedObjectConvertible>(with predicate: NSPredicate? = nil,
                                                sortDescriptors: [NSSortDescriptor]? = nil,
                                                fetchLimit: Int? = nil,
-                                               fetchBatchSize: Int? = nil,
+                                               fetchBatchSize: Int? = 20,
                                                completion: @escaping (Result<[Entity], Error>) -> ())
     {
         self.coreData.performForegroundTask { context in

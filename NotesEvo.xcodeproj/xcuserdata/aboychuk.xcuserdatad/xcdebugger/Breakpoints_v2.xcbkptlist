@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NotesEvo/Source/UI/ViewControllers/NoteListViewController/NoteListViewController.swift"
-            timestampString = "580996445.1419981"
+            timestampString = "581257138.9349689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "didAdd(model:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NotesEvo/Source/UI/ViewControllers/NoteListViewController/NoteListViewController.swift"
-            timestampString = "580996445.142069"
+            timestampString = "581257138.93551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "didEdit(model:index:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NotesEvo/Source/UI/ViewControllers/NoteListViewController/NoteListViewController.swift"
-            timestampString = "580996445.142136"
+            timestampString = "581257138.9359"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "didAdd(model:)"
             landmarkType = "7">
          </BreakpointContent>

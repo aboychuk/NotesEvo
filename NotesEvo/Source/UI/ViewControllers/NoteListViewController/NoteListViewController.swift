@@ -12,9 +12,7 @@ class NoteListViewController: UIViewController {
     
     // MARK: - Properties
     
-    var notesModel = ArrayModel<Note>()
-    private var filteredTableData = [Note]()
-    private var coreData = NoteDataController()
+    private var dataController = NoteDataController()
     private var searchController = UISearchController(searchResultsController: nil)
     private lazy var addBarButton = UIBarButtonItem(barButtonSystemItem: .add,
                                        target: self,
@@ -31,6 +29,7 @@ class NoteListViewController: UIViewController {
     // MARK: - Private
     
     private func setupView() {
+        self.notesTableView?.rowHeight = 96
         self.notesTableView?.registerCell(type: NoteTableViewCell.self)
         self.navigationItem.title = Constants.notes.value
         self.navigationItem.rightBarButtonItem = self.addBarButton
@@ -57,10 +56,7 @@ class NoteListViewController: UIViewController {
     }
     
     private func prepareTest() {
-        self.coreData.fetchNotes { [weak self] noteArray in
-            noteArray.map { self?.notesModel.add(elements: $0) }
-            self?.notesTableView?.reloadData()
-        }
+        self.dataController.load { [weak self] in self?.notesTableView?.reloadData() }
     }
 
     
@@ -74,16 +70,13 @@ class NoteListViewController: UIViewController {
 extension NoteListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = self.searchController.isActive ? self.filteredTableData.count : self.notesModel.count
-        return count
+        return self.dataController.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let note = self.searchController.isActive
-            ? self.filteredTableData[indexPath.row]
-            : self.notesModel.elementAt(index: indexPath.row)
+        let note = self.dataController.note(at: indexPath.row)
         let cell = tableView.reusableCellWith(type: NoteTableViewCell.self, index: indexPath)
-        cell.fillView(with: note)
+        note.map { cell.fillView(with: $0) }
         
         return cell
     }
@@ -92,25 +85,20 @@ extension NoteListViewController: UITableViewDataSource {
 extension NoteListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let index = indexPath.row
-        let model = self.notesModel.elementAt(index: index)
+        let model = self.dataController.note(at: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
-        self.showNextVC(state: .detail(model: model))
+        model.map { self.showNextVC(state: .detail(model: $0)) }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: .default, title: "Edit") { [weak self] (action, indexpath) in
             let index = indexPath.row
-            let model = self?.notesModel[index]
+            let model = self?.dataController.note(at: index)
             model.map { self?.showNextVC(state: .edit(model: $0, index: index)) }
             
         }
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { [weak self] (action, indexPath) in
-            let index = indexPath.row
-            if let model = self?.notesModel[index] {
-                self?.coreData.remove(note: model) { error in print(error!)}
-            }
-            self?.notesModel.removeElement(at: index)
+            self?.dataController.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             
         }
@@ -129,13 +117,13 @@ extension NoteListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-            self.filteredTableData = self.notesModel.filter { note in
-                return note.content.lowercased().contains(searchText.lowercased())
+            self.dataController.search(text: searchText) {
+                self.notesTableView?.reloadData()
             }
-        } else {
-            self.filteredTableData = self.notesModel.allElements()
         }
-        self.notesTableView?.reloadData()
+        if !self.searchController.isActive {
+            self.dataController.load { self.notesTableView?.reloadData() }
+        }
     }
 }
 
@@ -145,8 +133,7 @@ extension NoteListViewController: ViewControllerDelegate {
     func didAdd(model: Note) {
         self.notesTableView?.updateTableWith { [weak self] in
             let index = 0
-            self?.notesModel.insert(element: model, index: index)
-            self?.coreData.upsert(note: model, completion: { error in print(error!)} )
+            self?.dataController.add(note: model, at: index)
             let indexPath = IndexPath(row: index, section: index)
             self?.notesTableView?.insertRows(at: [indexPath], with: .left)
         }
@@ -154,8 +141,7 @@ extension NoteListViewController: ViewControllerDelegate {
     
     func didEdit(model: Note, index: Int) {
         self.notesTableView?.updateTableWith { [weak self] in
-            self?.notesModel[index] = model
-            self?.coreData.upsert(note: model, completion: { error in print(error!)} )
+            self?.dataController.update(note: model, index: index)
             let indexPath = IndexPath(row: index, section: 0)
             self?.notesTableView?.reloadRows(at: [indexPath], with: .right)
         }
