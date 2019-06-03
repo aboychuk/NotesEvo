@@ -33,8 +33,12 @@ class NoteDataController {
         }
     }
     
-    func fetchNotes(completion: @escaping (Model?) -> ()) {
-        self.manager.get { [weak self] (result: Result<Model, Error>) in
+    func fetchNotes(predicate: NSPredicate? = nil,
+                    sortDescriptors: [NSSortDescriptor]? = nil,
+                    completion: @escaping (Model?) -> ())
+    {
+        self.manager.get(with: predicate, sortDescriptors: sortDescriptors)
+        { [weak self] (result: Result<Model, Error>) in
             switch result {
             case .success(let notes):
                 self?.model = notes
