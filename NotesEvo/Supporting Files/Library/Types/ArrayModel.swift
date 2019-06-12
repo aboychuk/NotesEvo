@@ -6,7 +6,7 @@
 //  Copyright © 2017 Andrew Boychuk. All rights reserved.
 //
 
-struct ArrayModel<Element: Equatable> {
+class ArrayModel<Element: Equatable> {
     
     //MARK: - Properties
     
@@ -17,15 +17,15 @@ struct ArrayModel<Element: Equatable> {
     
     //MARK: - Public Functions
     
-    mutating func add(element: Element) {
+    public func add(element: Element) {
         self.insert(element: element, index: self.count)
     }
     
-    mutating func add(elements: [Element]) {
+    public func add(elements: [Element]) {
         elements.forEach { self.add(element: $0) }
     }
     
-    mutating func insert(element: Element, index: Int) {
+    public func insert(element: Element, index: Int) {
         synchronized(self) {
             if self.count >= index {
                 self.elements.insert(element, at: index)
@@ -33,15 +33,15 @@ struct ArrayModel<Element: Equatable> {
         }
     }
     
-    mutating func remove(element: Element) {
+    public func remove(element: Element) {
         self.index(of: element).map { self.removeElement(at: $0) }
     }
     
-    mutating func remove(elements: [Element]) {
+    public func remove(elements: [Element]) {
         elements.forEach { self.remove(element: $0) }
     }
     
-    mutating func removeElement(at index: Int) {
+    public func removeElement(at index: Int) {
         synchronized(self) {
             if self.count > index {
                 self.elements.remove(at: index)
@@ -49,7 +49,7 @@ struct ArrayModel<Element: Equatable> {
         }
     }
     
-    mutating func removeAll() {
+    public func removeAll() {
         self.elements.removeAll()
     }
     
@@ -61,19 +61,19 @@ struct ArrayModel<Element: Equatable> {
 //        }
 //    }
     
-    mutating func moveElement(at sourceIndex: Int, to destenationIndex: Int) {
+    public func moveElement(at sourceIndex: Int, to destenationIndex: Int) {
         synchronized(self) {
             self.elements.move(from: sourceIndex, to: destenationIndex)
         }
     }
     
-    func index(of element: Element) -> Int? {
+    public func index(of element: Element) -> Int? {
         return synchronized(self) {
             self.elements.firstIndex(of: element)
         }
     }
     
-    func allElements() -> [Element] {
+    public func allElements() -> [Element] {
         return synchronized(self) {
             self.elements
         }
@@ -114,6 +114,8 @@ struct ElementIterator<Element>: IteratorProtocol {
             index += 1
             
             return element
-        } else { return nil }
+        } else {
+            return nil
+        }
     }
 }
