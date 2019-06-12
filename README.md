@@ -13,4 +13,4 @@ Note editing\
 Note deletion\ 
 Search by notes\
 Pagination\
-Sorting by date\
+Sorting by date
