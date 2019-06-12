@@ -14,7 +14,7 @@ enum NoteViewControllerState {
     case edit(model: Note, index: Int)
 }
 
-class NoteViewController: UIViewController, RootView {
+class NoteViewController: UIViewController, RootView, KeyboardObservable {
     typealias ViewType = NoteView
     
     // MARK: - Properties
