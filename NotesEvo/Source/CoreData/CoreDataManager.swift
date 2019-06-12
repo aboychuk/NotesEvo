@@ -27,13 +27,14 @@ class CoreDataManager {
     
     // MARK: - Public
     
+    /// Gets entities from storage on background thread
     func get<Entity: ManagedObjectConvertible>(with predicate: NSPredicate? = nil,
                                                sortDescriptors: [NSSortDescriptor]? = nil,
                                                fetchLimit: Int? = nil,
                                                fetchBatchSize: Int? = 20,
                                                completion: @escaping (Result<[Entity], Error>) -> ())
     {
-        self.coreData.performForegroundTask { context in
+        self.coreData.performBackgroundTask { context in
             do {
                 let fetchRequest = Entity.ManagedObject.fetchRequest()
                 fetchRequest.predicate = predicate
@@ -52,6 +53,7 @@ class CoreDataManager {
         }
     }
     
+    /// If entity already exists updates it else creates new one. executes in background
     func upsert<Entity: ManagedObjectConvertible>(entities: [Entity],
                                                   completion: @escaping (Error?) -> ())
     {
@@ -68,6 +70,7 @@ class CoreDataManager {
         }
     }
     
+    /// Removes entity from storage. Executes in background
     func remove<Entity: ManagedObjectConvertible>(entity: Entity,
                                                   completion: @escaping (Error?) -> ())
     {

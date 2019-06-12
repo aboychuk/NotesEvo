@@ -21,7 +21,7 @@ struct Note {
     
     init() {
         let date = Date()
-        let content = Constants.empty.value
+        let content = Strings.empty.capitalized
         self.init(date: date, content: content)
     }
     

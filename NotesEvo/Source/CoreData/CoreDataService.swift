@@ -17,7 +17,7 @@ final class CoreDataService {
     
     var errorHandler: (Error) -> () = { _ in }
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: Constants.appName.value)
+        let container = NSPersistentContainer(name: Strings.appName.value)
         container.loadPersistentStores(completionHandler: { [weak self] (storeDescription, error) in
             if let error = error {
                 NSLog("CoreData error \(error), \(String(describing: error._userInfo))")

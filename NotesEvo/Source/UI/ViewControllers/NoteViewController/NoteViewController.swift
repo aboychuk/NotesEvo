@@ -28,11 +28,29 @@ class NoteViewController: UIViewController, RootView {
     private lazy var saveBarButton = UIBarButtonItem(barButtonSystemItem: .save,
                                                      target: self,
                                                      action: #selector(onSaveButton))
-    // MARK: - Override
+    // MARK: - View lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.subscribeForKeyboardWillShowNotification { (keyboardSize, animationDuration) in
+            UIView.animate(withDuration: animationDuration) { [weak self] in
+                self?.rootView?.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - keyboardSize.height))
+            }
+        }
+        
+        self.subscribeForKeyboardWillHideNotification() { animationDuration in
+            UIView.animate(withDuration: animationDuration) { [weak self] in
+                self?.rootView?.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.unsubscribeForKeyboardNotifications()
     }
     
     // MARK: - Private

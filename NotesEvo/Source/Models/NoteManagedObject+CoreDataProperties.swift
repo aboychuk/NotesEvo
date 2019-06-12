@@ -14,7 +14,7 @@ import CoreData
 extension NoteManagedObject {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<NoteManagedObject> {
-        return NSFetchRequest<NoteManagedObject>(entityName: "NoteManagedObject")
+        return NSFetchRequest<NoteManagedObject>(entityName: typeString(NoteManagedObject.self))
     }
 
     @NSManaged public var identifier: String?
