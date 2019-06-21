@@ -28,13 +28,12 @@
 		6F4712A2228EB6290097E883 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4712A0228EB6290097E883 /* LaunchScreen.storyboard */; };
 		6F486ABE2292C455000A0171 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486ABD2292C455000A0171 /* Note.swift */; };
 		6F486AC02292D22C000A0171 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F486ABF2292D22C000A0171 /* NoteTableViewCell.swift */; };
-		6F57503022AF850E00A9E6EA /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57502F22AF850E00A9E6EA /* DataSource.swift */; };
-		6F57503222AF8E8D00A9E6EA /* ConfiguratorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F57503122AF8E8D00A9E6EA /* ConfiguratorType.swift */; };
 		6F5A2B4122B0DA5B00B6681E /* KeyboardObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A2B4022B0DA5B00B6681E /* KeyboardObservable.swift */; };
 		6F5B0A0E229FBA52001ABD5A /* ViewFillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B0A0D229FBA52001ABD5A /* ViewFillable.swift */; };
 		6F5B0A10229FBAEE001ABD5A /* ModelFillable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B0A0F229FBAEE001ABD5A /* ModelFillable.swift */; };
 		6F5B0A12229FC342001ABD5A /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B0A11229FC342001ABD5A /* NoteView.swift */; };
-		6F7F1D8C22A005B7007368B5 /* NotesDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F1D8B22A005B7007368B5 /* NotesDataController.swift */; };
+		6F72837822BB96070032B166 /* Notification.Name+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F72837722BB96070032B166 /* Notification.Name+Extension.swift */; };
+		6F7F1D8C22A005B7007368B5 /* NotesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F1D8B22A005B7007368B5 /* NotesDataSource.swift */; };
 		6FB59AF5229FE288004A6DB0 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB59AF4229FE288004A6DB0 /* CoreDataService.swift */; };
 		6FB59AF7229FE781004A6DB0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB59AF6229FE781004A6DB0 /* CoreDataManager.swift */; };
 		6FB59AFA229FEE5F004A6DB0 /* NotesEvo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6FB59AF8229FEE5F004A6DB0 /* NotesEvo.xcdatamodeld */; };
@@ -69,13 +68,12 @@
 		6F4712A3228EB6290097E883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F486ABD2292C455000A0171 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		6F486ABF2292D22C000A0171 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
-		6F57502F22AF850E00A9E6EA /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		6F57503122AF8E8D00A9E6EA /* ConfiguratorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguratorType.swift; sourceTree = "<group>"; };
 		6F5A2B4022B0DA5B00B6681E /* KeyboardObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObservable.swift; sourceTree = "<group>"; };
 		6F5B0A0D229FBA52001ABD5A /* ViewFillable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFillable.swift; sourceTree = "<group>"; };
 		6F5B0A0F229FBAEE001ABD5A /* ModelFillable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFillable.swift; sourceTree = "<group>"; };
 		6F5B0A11229FC342001ABD5A /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
-		6F7F1D8B22A005B7007368B5 /* NotesDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataController.swift; sourceTree = "<group>"; };
+		6F72837722BB96070032B166 /* Notification.Name+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification.Name+Extension.swift"; sourceTree = "<group>"; };
+		6F7F1D8B22A005B7007368B5 /* NotesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataSource.swift; sourceTree = "<group>"; };
 		6FB59AF4229FE288004A6DB0 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		6FB59AF6229FE781004A6DB0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6FB59AF9229FEE5F004A6DB0 /* NotesEvo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NotesEvo.xcdatamodel; sourceTree = "<group>"; };
@@ -132,6 +130,7 @@
 				6F0E073922953C3A0024C9FC /* DateFormatter+Extensions.swift */,
 				6F0E073B229547530024C9FC /* String+Extensions.swift */,
 				6FDFCD0322A9B22F009D8080 /* UIAlertController+Extensions.swift */,
+				6F72837722BB96070032B166 /* Notification.Name+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,6 +239,7 @@
 		6F486AB922929E0C000A0171 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6F7F1D8B22A005B7007368B5 /* NotesDataSource.swift */,
 				6F486ABD2292C455000A0171 /* Note.swift */,
 				6FB59AF8229FEE5F004A6DB0 /* NotesEvo.xcdatamodeld */,
 				6FB59AFB229FF14E004A6DB0 /* NoteManagedObject+CoreDataClass.swift */,
@@ -261,8 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				6F19955D22A3133E009C2492 /* ArrayModel.swift */,
-				6F57502F22AF850E00A9E6EA /* DataSource.swift */,
-				6F57503122AF8E8D00A9E6EA /* ConfiguratorType.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -272,7 +270,6 @@
 			children = (
 				6FB59AF4229FE288004A6DB0 /* CoreDataService.swift */,
 				6FB59AF6229FE781004A6DB0 /* CoreDataManager.swift */,
-				6F7F1D8B22A005B7007368B5 /* NotesDataController.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -352,7 +349,7 @@
 			files = (
 				6F0C013122969D9400F7D052 /* Strings.swift in Sources */,
 				6F0E073C229547530024C9FC /* String+Extensions.swift in Sources */,
-				6F7F1D8C22A005B7007368B5 /* NotesDataController.swift in Sources */,
+				6F7F1D8C22A005B7007368B5 /* NotesDataSource.swift in Sources */,
 				6F19955E22A3133E009C2492 /* ArrayModel.swift in Sources */,
 				6F12D9C922972D2A00F2401D /* UIWindow+Extensions.swift in Sources */,
 				6FB59AF7229FE781004A6DB0 /* CoreDataManager.swift in Sources */,
@@ -364,13 +361,12 @@
 				6F19955C22A31274009C2492 /* Array+Extensions.swift in Sources */,
 				6F12D9CC229736E400F2401D /* NoteListViewController.swift in Sources */,
 				6F12D9D3229745F200F2401D /* NoteViewController.swift in Sources */,
+				6F72837822BB96070032B166 /* Notification.Name+Extension.swift in Sources */,
 				6F0E073A22953C3A0024C9FC /* DateFormatter+Extensions.swift in Sources */,
 				6F5B0A10229FBAEE001ABD5A /* ModelFillable.swift in Sources */,
 				6F0C012E22969A5800F7D052 /* UITableView+Extensions.swift in Sources */,
 				6F0C012522968ACD00F7D052 /* ViewControllerDelegate.swift in Sources */,
 				6FB59B00229FF3AB004A6DB0 /* ManagedObjectConvertible.swift in Sources */,
-				6F57503222AF8E8D00A9E6EA /* ConfiguratorType.swift in Sources */,
-				6F57503022AF850E00A9E6EA /* DataSource.swift in Sources */,
 				6FDFCD0422A9B22F009D8080 /* UIAlertController+Extensions.swift in Sources */,
 				6F12D9BF2297209800F2401D /* RootView.swift in Sources */,
 				6F5B0A12229FC342001ABD5A /* NoteView.swift in Sources */,

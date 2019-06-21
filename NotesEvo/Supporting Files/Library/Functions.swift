@@ -22,3 +22,7 @@ public func synchronized<Type>(_ lock: AnyObject, block: () -> (Type)) -> Type {
 public func typeString<T>(_ type: T.Type) -> String {
     return String(describing: type)
 }
+
+public func cast<Value, Result>(_ value: Value) -> Result? {
+    return value as? Result
+}

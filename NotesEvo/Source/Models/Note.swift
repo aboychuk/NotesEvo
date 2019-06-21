@@ -14,8 +14,17 @@ struct Note {
     // MARK: - Properties
     
     let id: String
-    let modifyDate: Date
     let content: String
+    private let modifyDate: Date
+    var shortContent: String {
+        return self.content.truncate(length: 100)
+    }
+    var date: String {
+        return DateFormatter().dateString(self.modifyDate)
+    }
+    var time: String {
+        return DateFormatter().timeString(self.modifyDate)
+    }
     
     // MARK: - Init
     
